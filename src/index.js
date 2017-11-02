@@ -5,8 +5,8 @@ import config from 'config'
 import _ from 'lodash'
 import axios from 'axios'
 import {defineSupportCode, defineParameterType} from 'cucumber'
-import {diffConsole, isLike, isLikeHooks} from 'helpr'
-import {evalInContext, setState, getState, getUrl} from 'test-helpr'
+import {diffConsole, isLike, isLikeHooks} from '@watchmen/helpr'
+import {evalInContext, setState, getState, getUrl} from '@watchmen/test-helpr'
 
 /* eslint-disable new-cap */
 

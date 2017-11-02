@@ -127,3 +127,7 @@ Feature: test
     """
     { iss: 'chr', userId: '123', userName: 'john doe', clientId: '456' }
     """
+
+  Scenario: external
+    When we HTTP GET 'http://github.com'
+    Then our HTTP response should have status code 200

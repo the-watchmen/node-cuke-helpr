@@ -5,7 +5,7 @@ import bodyParser from 'body-parser'
 import debug from 'debug'
 import config from 'config'
 import _ from 'lodash'
-import {getState} from 'test-helpr'
+import {getState} from '@watchmen/test-helpr'
 import jwt from 'express-jwt'
 
 const dbg = debug('test:server')

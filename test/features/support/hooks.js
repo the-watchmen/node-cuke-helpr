@@ -1,5 +1,5 @@
 import debug from 'debug'
-import {initState} from 'test-helpr'
+import {initState} from '@watchmen/test-helpr'
 import {defineSupportCode} from 'cucumber'
 /* eslint-disable new-cap */
 

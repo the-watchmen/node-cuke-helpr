@@ -1,15 +1,17 @@
 {
-  "name": "cuke-helpr",
+  "name": "@watchmen/cuke-helpr",
   "version": "3.1.2",
   "description": "",
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tony-kerz/node-cuke-helpr.git"
+    "url": "https://github.com/the-watchmen/node-cuke-helpr.git"
   },
   "scripts": {
-    "cuke": "cross-env DEBUG=test:*,app:* cucumber-js --compiler=js:babel-polyfill --compiler=js:babel-core/register ./test",
-    "cuke-feature": "cross-env DEBUG=test:*,app:* cucumber-js --compiler=js:babel-polyfill --compiler=js:babel-core/register",
+    "cuke":
+      "cross-env DEBUG=test:*,app:* cucumber-js --compiler=js:babel-polyfill --compiler=js:babel-core/register ./test",
+    "cuke-feature":
+      "cross-env DEBUG=test:*,app:* cucumber-js --compiler=js:babel-polyfill --compiler=js:babel-core/register",
     "pretest": "xo",
     "test": "npm run cuke",
     "prebuild": "npm run test",
@@ -18,13 +20,13 @@
   "author": "tony kerz",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.16.2",
+    "@watchmen/helpr": "^1.0.3",
+    "@watchmen/test-helpr": "^0.3.4",
+    "axios": "^0.17.0",
     "config": "^1.26.2",
     "debug": "^3.0.1",
     "express-jwt": "^5.3.0",
-    "helpr": "^0.16.4",
-    "lodash": "^4.17.4",
-    "test-helpr": "^0.3.2"
+    "lodash": "^4.17.4"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
