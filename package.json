@@ -1,6 +1,6 @@
 {
   "name": "@watchmen/cuke-helpr",
-  "version": "3.1.4",
+  "version": "3.1.5",
   "description": "",
   "main": "dist/index.js",
   "repository": {
@@ -8,10 +8,8 @@
     "url": "https://github.com/the-watchmen/node-cuke-helpr.git"
   },
   "scripts": {
-    "cuke":
-      "cross-env DEBUG=test:*,app:* cucumber-js --compiler=js:babel-polyfill --compiler=js:babel-core/register ./test",
-    "cuke-feature":
-      "cross-env DEBUG=test:*,app:* cucumber-js --compiler=js:babel-polyfill --compiler=js:babel-core/register",
+    "cuke": "cross-env DEBUG=test:*,app:* cucumber-js --compiler=js:babel-polyfill --compiler=js:babel-core/register ./test",
+    "cuke-feature": "cross-env DEBUG=test:*,app:* cucumber-js --compiler=js:babel-polyfill --compiler=js:babel-core/register",
     "pretest": "xo",
     "test": "npm run cuke",
     "prebuild": "npm run test",
