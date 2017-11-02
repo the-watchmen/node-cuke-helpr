@@ -8,8 +8,10 @@
     "url": "https://github.com/the-watchmen/node-cuke-helpr.git"
   },
   "scripts": {
-    "cuke": "cross-env DEBUG=test:*,app:* cucumber-js --compiler=js:babel-polyfill --compiler=js:babel-core/register ./test",
-    "cuke-feature": "cross-env DEBUG=test:*,app:* cucumber-js --compiler=js:babel-polyfill --compiler=js:babel-core/register",
+    "cuke":
+      "cross-env DEBUG=test:*,app:* cucumber-js --compiler=js:babel-polyfill --compiler=js:babel-core/register ./test",
+    "cuke-feature":
+      "cross-env DEBUG=test:*,app:* cucumber-js --compiler=js:babel-polyfill --compiler=js:babel-core/register",
     "pretest": "xo",
     "test": "npm run cuke",
     "prebuild": "npm run test",
@@ -34,7 +36,10 @@
     "body-parser": "^1.18.1",
     "cross-env": "^5.0.5",
     "cucumber": "^3.0.2",
+    "eslint-config-prettier": "^2.6.0",
+    "eslint-plugin-prettier": "^2.3.1",
     "express": "^4.15.4",
+    "prettier": "^1.7.4",
     "xo": "^0.18.2"
   },
   "xo": {
