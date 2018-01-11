@@ -115,18 +115,46 @@ Feature: test
     When we HTTP DELETE '/nope'
     Then our HTTP response should have status code 404
 
-  Scenario: user
-    Given we set the following HTTP headers:
+  Scenario: jwt
+    Given we set the following JWT claims with secret "listener.auth.secret":
     """
     {
-      authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjaHIiLCJ1c2VySWQiOiIxMjMiLCJ1c2VyTmFtZSI6ImpvaG4gZG9lIiwiY2xpZW50SWQiOiI0NTYifQ.DiomD9RA_lK_e3lz5Yuic6kvlmLXHQqhcdFFyuQwWj4'
+      preferred_username: 'tony-k',
+      given_name: 'tony',
+      family_name: 'kerz',
+      email: 'anthony.kerz@gmail.com'
     }
     """
     When we HTTP GET "/user"
     Then our HTTP response should be like:
     """
-    { iss: 'chr', userId: '123', userName: 'john doe', clientId: '456' }
+    {
+      preferred_username: 'tony-k',
+      given_name: 'tony',
+      family_name: 'kerz',
+      email: 'anthony.kerz@gmail.com'
+    }
     """
+
+  Scenario: user
+    Given we set the following HTTP headers:
+    """
+    {
+      authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0b255LWsiLCJnaXZlbl9uYW1lIjoidG9ueSIsImZhbWlseV9uYW1lIjoia2VyeiIsImVtYWlsIjoiYW50aG9ueS5rZXJ6QGdtYWlsLmNvbSIsImlhdCI6MTUxNTcwNDg5Nn0.blPuhpCd_AK7XhRJnT7Te-R-uCHUCvN3eSNPNZzE3iI'
+    }
+    """
+    When we HTTP GET "/user"
+    Then our HTTP response should be like:
+    """
+    {
+      preferred_username: 'tony-k',
+      given_name: 'tony',
+      family_name: 'kerz',
+      email: 'anthony.kerz@gmail.com'
+    }
+    """
+
+
 
   Scenario: external
     When we HTTP GET 'http://github.com'
