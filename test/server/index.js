@@ -2,13 +2,13 @@
 import 'babel-polyfill'
 import express from 'express'
 import bodyParser from 'body-parser'
-import debug from 'debug'
 import config from 'config'
 import _ from 'lodash'
+import debug from '@watchmen/debug'
 import {getState} from '@watchmen/test-helpr'
 import jwt from 'express-jwt'
 
-const dbg = debug('test:server')
+const dbg = debug(__filename)
 const app = express()
 app.use(bodyParser.json())
 
@@ -17,7 +17,10 @@ process.on('unhandledRejection', err => {
   process.exit(1)
 })
 
-app.use(jwt({secret: 'secret', credentialsRequired: false}))
+const secret = config.get('listener.auth.secret')
+dbg('secret=%o', secret)
+
+app.use(jwt({secret, credentialsRequired: false}))
 
 app.get('/', (req, res) => {
   dbg('index: state=%o', getState())

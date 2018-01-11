@@ -1,18 +1,19 @@
 import assert from 'assert'
 import queryString from 'querystring'
-import debug from 'debug'
 import config from 'config'
 import _ from 'lodash'
 import axios from 'axios'
 import {defineSupportCode, defineParameterType} from 'cucumber'
+import debug from '@watchmen/debug'
 import {diffConsole, isLike, isLikeHooks} from '@watchmen/helpr'
 import {evalInContext, setState, getState, getUrl} from '@watchmen/test-helpr'
+import jwt from 'jsonwebtoken'
 
-/* eslint-disable new-cap */
+/* eslint-disable new-capp */
 
 const port = config.get('listener.port')
 
-const dbg = debug('app:http:steps')
+const dbg = debug(__filename)
 
 defineParameterType({
   name: 'verb',
@@ -39,6 +40,22 @@ export default function(context) {
         setState({headers})
       } catch (err) {
         dbg('given-headers: caught error=%o', err)
+        throw err
+      }
+    })
+
+    Given('we set the following JWT claims with secret {string}:', function(
+      secretString,
+      claimsString
+    ) {
+      try {
+        const secret = evalInContext({js: secretString, context})
+        const claims = evalInContext({js: claimsString, context})
+        dbg('given-claims: claims=%o', claims)
+        const token = jwt.sign(claims, secret)
+        setState({headers: {Authorization: `Bearer ${token}`}})
+      } catch (err) {
+        dbg('given-claims: caught error=%o', err)
         throw err
       }
     })

@@ -1,10 +1,9 @@
-import debug from 'debug'
+import debug from '@watchmen/debug'
 import {initState} from '@watchmen/test-helpr'
 import {defineSupportCode} from 'cucumber'
-/* eslint-disable new-cap */
+/* eslint-disable new-capp */
 
-const dbg = debug('test:support:hooks')
-dbg('loaded hooks')
+const dbg = debug(__filename)
 
 // eslint-disable-next-line no-unused-expressions
 require('../../server').default
